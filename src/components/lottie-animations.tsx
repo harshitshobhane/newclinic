@@ -1,55 +1,24 @@
 "use client"
 
 import Lottie from 'lottie-react'
-import { useRef, useEffect, useState } from 'react'
+import { useRef } from 'react'
 
-// Hook to load Lottie animation data via API route
-function useLottieData(filename: string) {
-  const [animationData, setAnimationData] = useState(null)
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    const loadAnimation = async () => {
-      try {
-        // Use API route to serve JSON files reliably
-        const response = await fetch(`/api/animations/${filename}`)
-        
-        if (response.ok) {
-          const data = await response.json()
-          setAnimationData(data)
-          console.log(`Successfully loaded animation: ${filename}`)
-        } else {
-          console.error(`Failed to load animation: ${filename} - Status: ${response.status}`)
-        }
-      } catch (error) {
-        console.error(`Error loading animation ${filename}:`, error)
-      } finally {
-        setLoading(false)
-      }
-    }
-    
-    loadAnimation()
-  }, [filename])
-
-  return { animationData, loading }
-}
+// Import Lottie animation data directly from src/data
+import onlineDoctorData from '../data/online-doctor.json'
+import birdData from '../data/Bird.json'
+import familyInsuranceData from '../data/Family_Insurance.json'
+import hospitalData from '../data/Hospital.json'
+import doctorData from '../data/DOCTOR.json'
 
 // Online Doctor Animation Component
 export function OnlineDoctorAnimation({ className = "" }: { className?: string }) {
   const animationRef = useRef<any>(null)
-  const { animationData, loading } = useLottieData('online-doctor.json')
-
-  if (loading) {
-    return <div className={`${className} flex items-center justify-center`}>
-      <div className="w-8 h-8 border-4 border-primary-200 border-t-primary-600 rounded-full animate-spin"></div>
-    </div>
-  }
 
   return (
     <div className={`${className}`}>
       <Lottie
         lottieRef={animationRef}
-        animationData={animationData}
+        animationData={onlineDoctorData}
         loop={true}
         autoplay={true}
         style={{ width: '100%', height: '100%' }}
@@ -61,19 +30,12 @@ export function OnlineDoctorAnimation({ className = "" }: { className?: string }
 // Bird Animation Component (for wellness/nature theme)
 export function BirdAnimation({ className = "" }: { className?: string }) {
   const animationRef = useRef<any>(null)
-  const { animationData, loading } = useLottieData('Bird.json')
-
-  if (loading) {
-    return <div className={`${className} flex items-center justify-center`}>
-      <div className="w-6 h-6 border-2 border-primary-200 border-t-primary-600 rounded-full animate-spin"></div>
-    </div>
-  }
 
   return (
     <div className={`${className}`}>
       <Lottie
         lottieRef={animationRef}
-        animationData={animationData}
+        animationData={birdData}
         loop={true}
         autoplay={true}
         style={{ width: '100%', height: '100%' }}
@@ -85,37 +47,12 @@ export function BirdAnimation({ className = "" }: { className?: string }) {
 // Family Insurance Animation Component
 export function FamilyInsuranceAnimation({ className = "" }: { className?: string }) {
   const animationRef = useRef<any>(null)
-  const { animationData, loading } = useLottieData('Family_Insurance.json')
-
-  if (loading) {
-    return <div className={`${className} flex items-center justify-center`}>
-      <div className="w-8 h-8 border-4 border-primary-200 border-t-primary-600 rounded-full animate-spin"></div>
-    </div>
-  }
-
-  if (!animationData) {
-    return (
-      <div className={`${className} flex items-center justify-center bg-gradient-to-br from-primary-50 to-secondary-50 rounded-2xl`}>
-        <div className="text-center">
-          <div className="w-24 h-24 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center">
-              <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-              </svg>
-            </div>
-          </div>
-          <h3 className="text-lg font-semibold text-gray-700 mb-2">Family Healthcare</h3>
-          <p className="text-gray-500 text-sm">Comprehensive family care</p>
-        </div>
-      </div>
-    )
-  }
 
   return (
     <div className={`${className}`}>
       <Lottie
         lottieRef={animationRef}
-        animationData={animationData}
+        animationData={familyInsuranceData}
         loop={true}
         autoplay={true}
         style={{ width: '100%', height: '100%' }}
@@ -127,19 +64,12 @@ export function FamilyInsuranceAnimation({ className = "" }: { className?: strin
 // Hospital Animation Component
 export function HospitalAnimation({ className = "" }: { className?: string }) {
   const animationRef = useRef<any>(null)
-  const { animationData, loading } = useLottieData('Hospital.json')
-
-  if (loading) {
-    return <div className={`${className} flex items-center justify-center`}>
-      <div className="w-8 h-8 border-4 border-primary-200 border-t-primary-600 rounded-full animate-spin"></div>
-    </div>
-  }
 
   return (
     <div className={`${className}`}>
       <Lottie
         lottieRef={animationRef}
-        animationData={animationData}
+        animationData={hospitalData}
         loop={true}
         autoplay={true}
         style={{ width: '100%', height: '100%' }}
@@ -151,39 +81,12 @@ export function HospitalAnimation({ className = "" }: { className?: string }) {
 // Doctor Animation Component
 export function DoctorAnimation({ className = "" }: { className?: string }) {
   const animationRef = useRef<any>(null)
-  const { animationData, loading } = useLottieData('DOCTOR.json')
-
-  if (loading) {
-    return (
-      <div className={`${className} flex items-center justify-center`}>
-        <div className="w-8 h-8 border-4 border-primary-200 border-t-primary-600 rounded-full animate-spin"></div>
-      </div>
-    )
-  }
-
-  if (!animationData) {
-    return (
-      <div className={`${className} flex items-center justify-center bg-gradient-to-br from-primary-50 to-secondary-50 rounded-2xl`}>
-        <div className="text-center">
-          <div className="w-24 h-24 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center">
-              <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-              </svg>
-            </div>
-          </div>
-          <h3 className="text-lg font-semibold text-gray-700 mb-2">Expert Doctor</h3>
-          <p className="text-gray-500 text-sm">Professional medical care</p>
-        </div>
-      </div>
-    )
-  }
 
   return (
     <div className={`${className}`}>
       <Lottie
         lottieRef={animationRef}
-        animationData={animationData}
+        animationData={doctorData}
         loop={true}
         autoplay={true}
         style={{ width: '100%', height: '100%' }}
