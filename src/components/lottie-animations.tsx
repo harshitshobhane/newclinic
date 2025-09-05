@@ -11,13 +11,35 @@ function useLottieData(filename: string) {
   useEffect(() => {
     const loadAnimation = async () => {
       try {
-        // Use dynamic import to load JSON from public folder
-        const response = await fetch(`/${filename}`)
-        if (response.ok) {
-          const data = await response.json()
+        // Try multiple approaches to load the JSON file
+        const baseUrl = typeof window !== 'undefined' ? window.location.origin : ''
+        const paths = [
+          `/${filename}`,  // Relative path (should work in both environments)
+          `${baseUrl}/${filename}`,  // Full URL
+        ]
+        
+        let data = null
+        for (const path of paths) {
+          try {
+            console.log(`Trying to load animation from: ${path}`)
+            const response = await fetch(path)
+            if (response.ok) {
+              data = await response.json()
+              console.log(`Successfully loaded animation from: ${path}`)
+              break
+            } else {
+              console.log(`Failed to load from ${path}: ${response.status}`)
+            }
+          } catch (e) {
+            console.log(`Error loading from ${path}:`, e)
+            continue
+          }
+        }
+        
+        if (data) {
           setAnimationData(data)
         } else {
-          console.error(`Failed to load animation: ${filename}`)
+          console.error(`Could not load animation: ${filename} from any path`)
         }
       } catch (error) {
         console.error(`Error loading animation ${filename}:`, error)
