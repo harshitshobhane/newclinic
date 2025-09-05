@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
-const logo = '/logo.svg';
+import logo from '../data/logo.svg'
 
 const CardNav = dynamic(() => import('./CardNav'), { ssr: false })
 
