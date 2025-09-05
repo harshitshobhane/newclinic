@@ -2,25 +2,51 @@
 
 import Lottie from 'lottie-react'
 import { useRef, useEffect, useState } from 'react'
-import { getLottiePath } from '@/lib/utils'
 
 // Hook to load Lottie animation data
-function useLottieData(path: string) {
+function useLottieData(filename: string) {
   const [animationData, setAnimationData] = useState(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch(path)
-      .then(response => response.json())
-      .then(data => {
-        setAnimationData(data)
+    // Use dynamic import for better compatibility
+    const loadAnimation = async () => {
+      try {
+        // Try different path approaches
+        const paths = [
+          `/${filename}`,
+          `/public/${filename}`,
+          `https://ourtopclinic-new.vercel.app/${filename}`,
+          `http://localhost:3000/${filename}`
+        ]
+        
+        let data = null
+        for (const path of paths) {
+          try {
+            const response = await fetch(path)
+            if (response.ok) {
+              data = await response.json()
+              break
+            }
+          } catch (e) {
+            continue
+          }
+        }
+        
+        if (data) {
+          setAnimationData(data)
+        } else {
+          console.error(`Could not load Lottie animation: ${filename}`)
+        }
         setLoading(false)
-      })
-      .catch(error => {
+      } catch (error) {
         console.error('Error loading Lottie animation:', error)
         setLoading(false)
-      })
-  }, [path])
+      }
+    }
+    
+    loadAnimation()
+  }, [filename])
 
   return { animationData, loading }
 }
@@ -28,7 +54,7 @@ function useLottieData(path: string) {
 // Online Doctor Animation Component
 export function OnlineDoctorAnimation({ className = "" }: { className?: string }) {
   const animationRef = useRef<any>(null)
-  const { animationData, loading } = useLottieData(getLottiePath('online-doctor.json'))
+  const { animationData, loading } = useLottieData('online-doctor.json')
 
   if (loading) {
     return <div className={`${className} flex items-center justify-center`}>
@@ -52,7 +78,7 @@ export function OnlineDoctorAnimation({ className = "" }: { className?: string }
 // Bird Animation Component (for wellness/nature theme)
 export function BirdAnimation({ className = "" }: { className?: string }) {
   const animationRef = useRef<any>(null)
-  const { animationData, loading } = useLottieData(getLottiePath('Bird.json'))
+  const { animationData, loading } = useLottieData('Bird.json')
 
   if (loading) {
     return <div className={`${className} flex items-center justify-center`}>
@@ -76,7 +102,7 @@ export function BirdAnimation({ className = "" }: { className?: string }) {
 // Family Insurance Animation Component
 export function FamilyInsuranceAnimation({ className = "" }: { className?: string }) {
   const animationRef = useRef<any>(null)
-  const { animationData, loading } = useLottieData(getLottiePath('Family_Insurance.json'))
+  const { animationData, loading } = useLottieData('Family_Insurance.json')
 
   if (loading) {
     return <div className={`${className} flex items-center justify-center`}>
@@ -118,7 +144,7 @@ export function FamilyInsuranceAnimation({ className = "" }: { className?: strin
 // Hospital Animation Component
 export function HospitalAnimation({ className = "" }: { className?: string }) {
   const animationRef = useRef<any>(null)
-  const { animationData, loading } = useLottieData(getLottiePath('Hospital.json'))
+  const { animationData, loading } = useLottieData('Hospital.json')
 
   if (loading) {
     return <div className={`${className} flex items-center justify-center`}>
@@ -142,7 +168,7 @@ export function HospitalAnimation({ className = "" }: { className?: string }) {
 // Doctor Animation Component
 export function DoctorAnimation({ className = "" }: { className?: string }) {
   const animationRef = useRef<any>(null)
-  const { animationData, loading } = useLottieData(getLottiePath('DOCTOR.json'))
+  const { animationData, loading } = useLottieData('DOCTOR.json')
 
   if (loading) {
     return (
