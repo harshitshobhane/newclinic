@@ -2,6 +2,7 @@
 
 import Lottie from 'lottie-react'
 import { useRef, useEffect, useState } from 'react'
+import { getLottiePath } from '@/lib/utils'
 
 // Hook to load Lottie animation data
 function useLottieData(path: string) {
@@ -27,7 +28,7 @@ function useLottieData(path: string) {
 // Online Doctor Animation Component
 export function OnlineDoctorAnimation({ className = "" }: { className?: string }) {
   const animationRef = useRef<any>(null)
-  const { animationData, loading } = useLottieData('/online doctor.json')
+  const { animationData, loading } = useLottieData(getLottiePath('online-doctor.json'))
 
   if (loading) {
     return <div className={`${className} flex items-center justify-center`}>
@@ -51,7 +52,7 @@ export function OnlineDoctorAnimation({ className = "" }: { className?: string }
 // Bird Animation Component (for wellness/nature theme)
 export function BirdAnimation({ className = "" }: { className?: string }) {
   const animationRef = useRef<any>(null)
-  const { animationData, loading } = useLottieData('/Bird.json')
+  const { animationData, loading } = useLottieData(getLottiePath('Bird.json'))
 
   if (loading) {
     return <div className={`${className} flex items-center justify-center`}>
@@ -75,7 +76,7 @@ export function BirdAnimation({ className = "" }: { className?: string }) {
 // Family Insurance Animation Component
 export function FamilyInsuranceAnimation({ className = "" }: { className?: string }) {
   const animationRef = useRef<any>(null)
-  const { animationData, loading } = useLottieData('/Family_Insurance.json')
+  const { animationData, loading } = useLottieData(getLottiePath('Family_Insurance.json'))
 
   if (loading) {
     return <div className={`${className} flex items-center justify-center`}>
@@ -117,7 +118,7 @@ export function FamilyInsuranceAnimation({ className = "" }: { className?: strin
 // Hospital Animation Component
 export function HospitalAnimation({ className = "" }: { className?: string }) {
   const animationRef = useRef<any>(null)
-  const { animationData, loading } = useLottieData('/Hospital.json')
+  const { animationData, loading } = useLottieData(getLottiePath('Hospital.json'))
 
   if (loading) {
     return <div className={`${className} flex items-center justify-center`}>
@@ -141,7 +142,7 @@ export function HospitalAnimation({ className = "" }: { className?: string }) {
 // Doctor Animation Component
 export function DoctorAnimation({ className = "" }: { className?: string }) {
   const animationRef = useRef<any>(null)
-  const { animationData, loading } = useLottieData('/DOCTOR.json')
+  const { animationData, loading } = useLottieData(getLottiePath('DOCTOR.json'))
 
   if (loading) {
     return (
