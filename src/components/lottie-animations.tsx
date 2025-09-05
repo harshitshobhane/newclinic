@@ -9,8 +9,16 @@ function useLottieData(path: string) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch(path)
-      .then(response => response.json())
+    // Use absolute URL for production compatibility
+    const fullPath = path.startsWith('/') ? path : `/${path}`
+    
+    fetch(fullPath)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Failed to load animation: ${response.status}`)
+        }
+        return response.json()
+      })
       .then(data => {
         setAnimationData(data)
         setLoading(false)
@@ -27,7 +35,7 @@ function useLottieData(path: string) {
 // Online Doctor Animation Component
 export function OnlineDoctorAnimation({ className = "" }: { className?: string }) {
   const animationRef = useRef<any>(null)
-  const { animationData, loading } = useLottieData('/online doctor.json')
+  const { animationData, loading } = useLottieData('/online-doctor.json')
 
   if (loading) {
     return <div className={`${className} flex items-center justify-center`}>
