@@ -3,7 +3,7 @@
 import Lottie from 'lottie-react'
 import { useRef, useEffect, useState } from 'react'
 
-// Hook to load Lottie animation data from public folder
+// Hook to load Lottie animation data via API route
 function useLottieData(filename: string) {
   const [animationData, setAnimationData] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -11,35 +11,15 @@ function useLottieData(filename: string) {
   useEffect(() => {
     const loadAnimation = async () => {
       try {
-        // Try multiple approaches to load the JSON file
-        const baseUrl = typeof window !== 'undefined' ? window.location.origin : ''
-        const paths = [
-          `/${filename}`,  // Relative path (should work in both environments)
-          `${baseUrl}/${filename}`,  // Full URL
-        ]
+        // Use API route to serve JSON files reliably
+        const response = await fetch(`/api/animations/${filename}`)
         
-        let data = null
-        for (const path of paths) {
-          try {
-            console.log(`Trying to load animation from: ${path}`)
-            const response = await fetch(path)
-            if (response.ok) {
-              data = await response.json()
-              console.log(`Successfully loaded animation from: ${path}`)
-              break
-            } else {
-              console.log(`Failed to load from ${path}: ${response.status}`)
-            }
-          } catch (e) {
-            console.log(`Error loading from ${path}:`, e)
-            continue
-          }
-        }
-        
-        if (data) {
+        if (response.ok) {
+          const data = await response.json()
           setAnimationData(data)
+          console.log(`Successfully loaded animation: ${filename}`)
         } else {
-          console.error(`Could not load animation: ${filename} from any path`)
+          console.error(`Failed to load animation: ${filename} - Status: ${response.status}`)
         }
       } catch (error) {
         console.error(`Error loading animation ${filename}:`, error)
