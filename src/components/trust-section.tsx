@@ -49,10 +49,10 @@ export default function TrustSection() {
           className="text-center mb-12 sm:mb-16 lg:mb-20"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 lg:mb-8 leading-tight px-2">
-            Why Choose <span className="bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">OurTopClinic</span>?
+            Why Choose Our <span className="bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">OurTopClinic</span>?
           </h2>
           <p className="text-lg sm:text-xl lg:text-2xl text-gray-700 max-w-4xl mx-auto px-2 sm:px-4 leading-relaxed font-medium">
-            <span className="font-bold text-primary-600">OurTopClinic</span> is building something special in North Palm Beach — a healthcare experience 
+            <span className="font-bold text-primary-600">We're thrilled to open our NEW location</span> in North Palm Beach — bringing you a fresh, modern healthcare experience 
             that's both professional and personal.
           </p>
         </motion.div>
@@ -92,10 +92,10 @@ export default function TrustSection() {
         >
           <div className="text-center lg:text-left order-2 lg:order-1">
             <h3 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-6 sm:mb-8 leading-tight px-2">
-              Comprehensive <span className="text-primary-600">Family Care</span>
+              Welcome to Our <span className="text-primary-600">OurTopClinic</span>
             </h3>
             <p className="text-lg sm:text-xl text-gray-700 mb-6 sm:mb-8 leading-relaxed font-medium px-2">
-              At OurTopClinic, we believe healthcare should be accessible for the entire family. 
+              We're excited to serve the North Palm Beach community with our brand new clinic! 
               From primary care to specialized treatments, we're here to support your family's 
               health journey every step of the way.
             </p>

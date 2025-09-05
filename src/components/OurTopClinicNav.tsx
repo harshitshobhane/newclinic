@@ -34,7 +34,6 @@ const OurTopClinicNav = () => {
       textColor: "#fff",
       links: [
         { label: "Our Mission", ariaLabel: "Our Mission", href: "#about" },
-        { label: "Meet the Team", ariaLabel: "Meet the Team", href: "#about" },
         { label: "Location", ariaLabel: "Clinic Location", href: "#about" }
       ]
     },

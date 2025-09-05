@@ -246,7 +246,7 @@ export default function WaitlistForm() {
                   ease: "easeInOut"
                 }}
               >
-                Only {spotsLeft} spots left!
+                NEW Clinic Opening - Only {spotsLeft} spots left!
               </motion.span>
             </motion.div>
             
@@ -312,7 +312,7 @@ export default function WaitlistForm() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-4xl font-bold text-gray-900 mb-4"
           >
-            Secure Your <span className="bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">Free Consultation</span>
+            Be First at Our <span className="bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">NEW Clinic</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -320,7 +320,7 @@ export default function WaitlistForm() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-lg text-gray-600 mb-6"
           >
-            Join our founding patients and get priority access to comprehensive healthcare
+            Join our founding patients and be among the first to experience our brand new clinic in North Palm Beach
           </motion.p>
           
           {/* Progress Steps */}

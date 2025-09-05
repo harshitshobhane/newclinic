@@ -107,12 +107,13 @@ export default function HeroSection() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-8 sm:mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
             >
-              <span className="font-bold text-primary-600">OurTopClinic</span> brings you comprehensive healthcare with 
+              <span className="font-bold text-primary-600">We're thrilled to announce our NEW clinic opening in North Palm Beach!</span> 
+              <span> Experience comprehensive healthcare with </span>
               <span className="font-semibold text-secondary-600"> Primary Care</span>, 
               <span className="font-semibold text-primary-600"> IV Hydration</span>, 
               <span className="font-semibold text-secondary-600"> Weight Loss</span>, and 
               <span className="font-semibold text-primary-600"> Aesthetics</span> — 
-              all under one roof in North Palm Beach.
+              all conveniently located under one roof.
             </motion.p>
 
 
