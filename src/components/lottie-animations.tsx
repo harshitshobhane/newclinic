@@ -17,7 +17,6 @@ function useLottieData(filename: string) {
           `/${filename}`,
           `/public/${filename}`,
           `https://ourtopclinic-new.vercel.app/${filename}`,
-          `http://localhost:3000/${filename}`
         ]
         
         let data = null
