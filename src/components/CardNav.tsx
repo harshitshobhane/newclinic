@@ -1,6 +1,7 @@
 "use client"
 
 import { useLayoutEffect, useRef, useState, useEffect } from 'react';
+import Image from 'next/image';
 // use your own icon import if react-icons is not available
 import { GoArrowUpRight, GoArrowLeft } from 'react-icons/go';
 import './CardNav.css';
@@ -182,9 +183,11 @@ const CardNav = ({
               <div className="hamburger-line" />
             </div>
             <div className="logo-container">
-              <img 
+              <Image 
                 src={logo} 
                 alt={logoAlt} 
+                width={120}
+                height={28}
                 className="logo cursor-pointer hover:opacity-80 transition-opacity" 
                 onClick={() => window.open('https://ourtopclinic.com', '_blank')}
               />
@@ -221,9 +224,11 @@ const CardNav = ({
           </div>
 
           <div className="logo-container">
-            <img 
+            <Image 
               src={logo} 
               alt={logoAlt} 
+              width={120}
+              height={28}
               className="logo cursor-pointer hover:opacity-80 transition-opacity" 
               onClick={() => window.open('https://ourtopclinic.com', '_blank')}
             />
