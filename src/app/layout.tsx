@@ -7,6 +7,7 @@ import { Analytics } from '@vercel/analytics/react'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://ourtopclinic.com/NorthPalmBeach'),
   title: 'OurTopClinic - North Palm Beach Primary Care & Wellness',
   description: 'Affordable Primary Care, IV Hydration, Weight Loss, and Aesthetics in North Palm Beach. Join our waitlist for a FREE consultation at our grand opening!',
   keywords: 'primary care, North Palm Beach, IV hydration, weight loss, aesthetics, Botox, fillers, wellness clinic',
