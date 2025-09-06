@@ -186,10 +186,12 @@ const CardNav = ({
               <Image 
                 src={logo} 
                 alt={logoAlt} 
-                width={120}
-                height={28}
+                width={140}
+                height={40}
                 className="logo cursor-pointer hover:opacity-80 transition-opacity" 
                 onClick={() => window.open('https://ourtopclinic.com', '_blank')}
+                priority
+                style={{ objectFit: 'contain' }}
               />
             </div>
                        <div
@@ -224,13 +226,15 @@ const CardNav = ({
           </div>
 
           <div className="logo-container">
-            <Image 
+              <Image 
               src={logo} 
               alt={logoAlt} 
-              width={120}
-              height={28}
+              width={140}
+              height={40}
               className="logo cursor-pointer hover:opacity-80 transition-opacity" 
               onClick={() => window.open('https://ourtopclinic.com', '_blank')}
+              priority
+              style={{ objectFit: 'contain' }}
             />
           </div>
 
@@ -254,14 +258,37 @@ const CardNav = ({
               style={{ backgroundColor: item.bgColor, color: item.textColor }}
             >
               <div className="nav-card-label">{item.label}</div>
-              <div className="nav-card-links">
-                {item.links?.map((lnk: NavLink, i: number) => (
-                  <a key={`${lnk.label}-${i}`} className="nav-card-link" href={lnk.href} aria-label={lnk.ariaLabel}>
-                    <GoArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
-                    {lnk.label}
-                  </a>
-                ))}
-              </div>
+                <div className="nav-card-links">
+                 {item.links?.map((lnk: NavLink, i: number) => {
+                   const isExternalLink = lnk.href?.startsWith('http');
+                   const isInternalScroll = lnk.href?.startsWith('#');
+                   
+                   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+                     if (isInternalScroll) {
+                       e.preventDefault();
+                       const element = document.querySelector(lnk.href!);
+                       if (element) {
+                         element.scrollIntoView({ behavior: 'smooth' });
+                       }
+                     }
+                   };
+                   
+                   return (
+                     <a 
+                       key={`${lnk.label}-${i}`} 
+                       className="nav-card-link" 
+                       href={lnk.href} 
+                       aria-label={lnk.ariaLabel}
+                       onClick={handleClick}
+                       target={isExternalLink ? "_blank" : undefined}
+                       rel={isExternalLink ? "noopener noreferrer" : undefined}
+                     >
+                       <GoArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
+                       {lnk.label}
+                     </a>
+                   );
+                 })}
+                </div>
             </div>
           ))}
         </div>

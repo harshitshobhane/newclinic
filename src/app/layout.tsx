@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   description: 'Affordable Primary Care, IV Hydration, Weight Loss, and Aesthetics in North Palm Beach. Join our waitlist for a FREE consultation at our grand opening!',
   keywords: 'primary care, North Palm Beach, IV hydration, weight loss, aesthetics, Botox, fillers, wellness clinic',
   authors: [{ name: 'OurTopClinic' }],
+  icons: {
+    icon: '/logo1.png',
+    shortcut: '/logo1.png',
+    apple: '/logo1.png',
+  },
   openGraph: {
     title: 'OurTopClinic - North Palm Beach Primary Care & Wellness',
     description: 'Affordable Primary Care, IV Hydration, Weight Loss, and Aesthetics in North Palm Beach. Join our waitlist for a FREE consultation!',

@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic'
 const CardNav = dynamic(() => import('./CardNav'), { ssr: false })
 
 const OurTopClinicNav = () => {
-  const logo = '/logo.svg'
+  const logo = '/logo.png'
   const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
@@ -33,8 +33,8 @@ const OurTopClinicNav = () => {
       bgColor: "#16A34A",
       textColor: "#fff",
       links: [
-        { label: "Our Mission", ariaLabel: "Our Mission", href: "#about" },
-        { label: "Location", ariaLabel: "Clinic Location", href: "#about" }
+        { label: "Our Mission", ariaLabel: "Our Mission", href: "https://ourtopclinic.com/about" },
+        { label: "Location", ariaLabel: "Clinic Location", href: "https://ourtopclinic.com/contact" }
       ]
     },
     {
@@ -42,9 +42,9 @@ const OurTopClinicNav = () => {
       bgColor: "#15803D", 
       textColor: "#fff",
       links: [
-        { label: "Book Appointment", ariaLabel: "Book an Appointment", href: "#waitlist" },
-        { label: "Phone", ariaLabel: "Call us", href: "tel:+15551234567" },
-        { label: "Email", ariaLabel: "Email us", href: "mailto:info@ourtopclinic.com" }
+        { label: "Book Appointment", ariaLabel: "Book an Appointment", href: "#waitlist-form" },
+        { label: "Phone", ariaLabel: "Call us", href: "https://ourtopclinic.com/contact" },
+        { label: "Email", ariaLabel: "Email us", href: "https://ourtopclinic.com/contact" }
       ]
     }
   ];

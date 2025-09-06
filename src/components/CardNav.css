@@ -87,14 +87,19 @@
 .logo-container {
   display: flex;
   align-items: center;
+  justify-content: center;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  max-width: 200px;
 }
 
 .logo {
-  height: 28px;
+  height: 40px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 .card-nav-cta-button {
@@ -192,6 +197,11 @@
     position: static;
     transform: none;
     order: 1;
+    max-width: 150px;
+  }
+  
+  .logo {
+    height: 32px;
   }
 
   .card-nav-cta-button {
