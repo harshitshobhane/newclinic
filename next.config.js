@@ -1,7 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Force basePath for testing
+  // Configure basePath for subpath deployment
   basePath: '/NorthPalmBeach',
+  
+  // Ensure trailing slash for consistent routing
+  trailingSlash: false,
+  
+  // Configure asset prefix for static assets
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/NorthPalmBeach' : '',
 
   // App Router is now stable in Next.js 14, no experimental flag needed
   images: {
