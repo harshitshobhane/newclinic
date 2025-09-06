@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Tell Next.js that this app is served from /NorthPalmBeach
-  basePath: '/NorthPalmBeach',
+  // Use basePath for production deployment at ourtopclinic.com/NorthPalmBeach
+  // Comment out this line when testing on Vercel directly
+  basePath: process.env.NODE_ENV === 'production' ? '/NorthPalmBeach' : '',
 
   // App Router is now stable in Next.js 14, no experimental flag needed
   images: {
